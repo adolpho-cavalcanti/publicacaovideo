@@ -1,0 +1,68 @@
+<div>
+    <div>
+        <a href="/videos/create">Novo</a>
+    </div>
+    <div style="right: 20px;top:20px;position: absolute;color:black;">
+        <% if(login){ %>
+            <a href="/users/logout"><strong>Sair</strong></a>
+        <% } %>
+    </div>
+    <div>
+        <form id="consultar">
+            <div">
+                <div>
+                    <span id="basic-addon1">
+                        <i data-icon="ei-search"></i>
+                    </span>
+                </div>
+                <input id="query" name="query" value="<%= params.query %>">
+            </div>
+            <div>
+                <i class="glyphicon glyphicon-search"></i>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <% if(videos.length > 0) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Vídeos</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(var i = 0; i < videos.length; i++) { %>
+            <tr>
+                <td>
+                    <%= videos[i].titulo %>
+                </td>
+
+                <td>
+                    <video controls>
+                        <source src='/uploads/<%= videos[i].path %>' type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% } %>
+
+    <% if(videos.length == 0){ %>
+    <tr>
+        <td>Nenhum vídeo foi encontrado.</td>
+    </tr>
+    <% } %>
+</div>
+<script type="text/javascript">
+    document.querySelector("#query").addEventListener('keyup', function (e) {
+        if (e.target.value.length == 0) {
+            this.removeAttribute('name');
+        } else {
+            this.setAttribute('name', 'query')
+        }
+    })
+</script>

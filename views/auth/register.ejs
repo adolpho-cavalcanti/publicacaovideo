@@ -1,0 +1,31 @@
+<form action="/users/register" method="POST">
+    <div>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" class=" <%= (typeof errors != 'undefined' && typeof errors.name != 'undefined') ? "is-invalid" : "is-valid" %>">
+        <% if(typeof errors != 'undefined' && typeof errors.name != 'undefined'){ %>
+            <div class="invalid-feedback"><%= errors.name %></div>
+        <% } %>
+    </div>
+    <div>
+        <label for="login">Login</label>
+        <input type="text" name="login" id="login" class=" <%= (typeof errors != 'undefined' && typeof errors.login != 'undefined') ? "is-invalid" : "is-valid" %>">
+        <% if(typeof errors != 'undefined' && typeof errors.login != 'undefined'){ %>
+            <div class="invalid-feedback"><%= errors.login %></div>
+        <% } %>
+    </div>
+    <div>
+        <label for="password">Senha</label>
+        <input type="password" name="password" id="password" class=" <%= (typeof errors != 'undefined' && typeof errors.password != 'undefined') ? "is-invalid" : "is-valid" %>">
+        <% if(typeof errors != 'undefined' && typeof errors.password != 'undefined'){ %>
+            <div class="invalid-feedback"><%= errors.password %></div>
+        <% } %>
+    </div>
+    <div>
+        <label for="password">Confirmar Senha</label>
+        <input type="password" name="password_confirm" id="password_confirm" class="">
+    </div>
+    <div>
+        <button>Entrar</button>
+    </div>
+</form>
+<a href="/users/login">Login</a>

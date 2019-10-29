@@ -1,0 +1,25 @@
+<form id="form-add-video" action="/videos" enctype="multipart/form-data" method="POST">
+    <div>
+        <label for="titulo">Título</label>
+        <input type="text"
+               class="form-control <%= (typeof errors != 'undefined' && typeof errors.titulo != 'undefined') ? "is-invalid" : "is-valid" %>"
+               name="titulo" id="titulo">
+        <% if(typeof errors != 'undefined' && typeof errors.titulo != 'undefined'){ %>
+            <div class="invalid-feedback">
+                <%= errors.titulo %>
+            </div>
+        <% } %>
+    </div>
+    <div>
+        <label for="video">Vídeo</label>
+        <input type="file" class="form-control-file" id="video" name="video">
+        <% if(typeof errors != 'undefined' && typeof errors.video != 'undefined'){ %>
+            <div class="invalid-feedback">
+                <%= errors.video %>
+            </div>
+        <% } %>
+    </div>
+    <div>
+        <button class="enviar">Enviar</button>
+    </div>
+</form>
